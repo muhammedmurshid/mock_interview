@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_mock_interviewer,access_main,model_mock_interviewer_table,mock_admin,1,1,1,1
+access_mock_interview,access_mock_interview,model_logic_mock_interview,mock_admin,1,1,1,1
+access_mock_interview_wizard,access_mock_interview,model_link_mock_interview_wizard,mock_admin,1,1,1,1
+access_mock_interviewer_coordinator,access_main,model_mock_interviewer_table,mock_teacher,1,1,1,1
+access_mock_interview_coordinator,access_mock_interview,model_logic_mock_interview,mock_teacher,1,1,1,1
+access_mock_interview_wizard_coordinator,access_mock_interview,model_link_mock_interview_wizard,mock_teacher,1,1,1,1

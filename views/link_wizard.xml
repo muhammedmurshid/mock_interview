@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="wizard_link_mock_interview" model="ir.ui.view">
+        <field name="name">Mock Interview Link</field>
+        <field name="model">link.mock_interview.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Mock Interview Link">
+                <script type="text/javascript">
+                    function copyMockInterviewLink()
+                    {
+                        var field_value = document.getElementsByName('interview_link_wizard');
+                        console.log(field_value[0].value)
+                        if (field_value.length)
+                        {
+                        navigator.clipboard.writeText(field_value[0].value)
+                        }
+                    }
+                </script>
+                <group>
+                    <group class="oe_title">
+                        <field name="interview_link_wizard"/>
+
+                    </group>
+
+                </group>
+                <footer>
+                    <button string="Copy Link" name="action_done" onclick="copyMockInterviewLink()" type="object" class="oe_highlight"
+                            help="Click Here to copy the interview link to your clipboard"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

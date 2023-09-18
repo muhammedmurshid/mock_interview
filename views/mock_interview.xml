@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="logic_mock_interview_form" model="ir.ui.view">
+        <field name="name">Mock Interview</field>
+        <field name="model">logic.mock_interview</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="student_name"/>
+                            <field name="communication_skill"/>
+                            <field name="language_skill"/>
+                            <field name="presentation_skill"/>
+                            <field name="confidence_level"/>
+                            <field name="body_language"/>
+                            <field name="dressing_pattern"/>
+                            <field name="attitude"/>
+                            <field name="quality_of_resume"/>
+                            <field name="friendliness"/>
+
+
+                        </group>
+                        <group>
+                            <field name="interviewer"/>
+                        </group>
+                    </group>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="logic_mock_interview_tree" model="ir.ui.view">
+        <field name="name">Mock Interview</field>
+        <field name="model">logic.mock_interview</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_name"/>
+
+            </tree>
+
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="mock_interview_form_action">
+        <field name="name">Mock Interview</field>
+        <field name="res_model">logic.mock_interview</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Mock Interview" id="menu_interview_main"
+              web_icon="mock_interview/static/description/icon.png"
+              sequence="9"/>
+    <menuitem name="Mock Interview" id="menu_interview_mock"
+              action="mock_interview_form_action"
+              parent="menu_interview_main"
+              sequence="1"/>
+
+</odoo>

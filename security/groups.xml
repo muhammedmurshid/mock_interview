@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="mock_interview_link_group">
+        <field name="name">Mock Interview</field>
+        <field name="sequence">21</field>
+        <field name="visible" eval="0"/>
+    </record>
+    <record id="mock_admin" model="res.groups">
+        <field name="name">HR Manager</field>
+        <field name="category_id" ref="mock_interview_link_group"/>
+    </record>
+    <record id="mock_teacher" model="res.groups">
+        <field name="name">Coordinator</field>
+        <field name="category_id" ref="mock_interview_link_group"/>
+    </record>
+
+</odoo>
