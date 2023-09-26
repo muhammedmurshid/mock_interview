@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <template id="css_link_mock_interview_form" name="CSS Link"
+              inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="mock_interview/static/src/css/rating.css"/>
+        </xpath>
+    </template>
     <template id="mock_interview_web_form_template">
         <t t-call="website.layout">
             <div id="request_form">
@@ -15,9 +21,13 @@
                                             <span class="s_website_form_mark">*</span>
                                         </label>
                                         <div class="col-sm">
-                                            <input type="text"
-                                                   class="form-control s_website_form_input" name="student_name"
-                                                   required=""/>
+                                            <select id="student_id" name="student" required="True" class="form-control"
+                                                    style="width: 432px; height: 35px;">
+                                                <t t-foreach="students" t-as="student">
+                                                    <option name="student_id" t-att-value="student.name.id"
+                                                            t-esc="student.name.name"/>
+                                                </t>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -29,9 +39,26 @@
                                             <span class="s_website_form_label_content">Interviewer</span>
                                         </label>
                                         <div class="col-sm">
-                                            <select name="interviewer" id="interviewer"
-                                                    class="form-control link-style">
-                                                <option t-att-value="id" t-esc="name"/>
+                                            <select id="interviewer_id" name="custom_interviewer_id" required="True" class="form-control"
+                                                    style="width: 432px; height: 35px;">
+                                                <option t-att-value="user"
+                                                        t-esc="name"/>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field" data-type="char"
+                                     data-name="Field">
+                                    <div id="field_to_hide">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px">
+                                            <span class="s_website_form_label_content">Coordinator</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select id="coordinator_id" name="coordinator" required="True" class="form-control"
+                                                    style="width: 432px; height: 35px;">
+                                                <option t-att-value="coord_id"
+                                                        t-esc="coordinator"/>
                                             </select>
                                         </div>
                                     </div>

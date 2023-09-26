@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="meeting_student_list_coordinators_rule" model="ir.rule">
+        <field name="name">Own Records</field>
+        <field name="model_id" ref="model_interview_attend_students_list"/>
+        <field name="domain_force">[('coordinator_id.id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('mock_interview.mock_teacher'))]"/>
+    </record>
+    <record id="mock_interview_coordinators_rule" model="ir.rule">
+        <field name="name">Own Records</field>
+        <field name="model_id" ref="model_logic_mock_interview"/>
+        <field name="domain_force">[('coordinator.id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('mock_interview.mock_teacher'))]"/>
+    </record>
+</odoo>

@@ -23,12 +23,6 @@
                             <field name="account_holder"/>
 
                         </group>
-                        <group>
-                            <button name="copy_interview_link" type="object"
-                                    string="Copy Interview Link"
-                                    class="oe_highlight" states="done"/>
-                            <!--                            <field name="interview_link"/>-->
-                        </group>
                     </group>
 
                 </sheet>

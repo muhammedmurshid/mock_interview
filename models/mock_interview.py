@@ -6,7 +6,7 @@ class MockInterview(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Mock Interview'
 
-    student_name = fields.Char(string='Student Name', required=True)
+    student_name = fields.Many2one('logic.students', string='Student Name', required=True)
     communication_skill = fields.Selection(
         [('0', 'None'), ('1', 'Poor'), ('2', 'Fair'), ('3', 'Good'), ('4', 'Very Good'), ('5', 'Excellent')],
         string='Communication Skill',
@@ -44,7 +44,8 @@ class MockInterview(models.Model):
         string='Friendliness',
     )
     interviewer = fields.Many2one('mock_interviewer.table', string='Interviewer')
+    coordinator = fields.Many2one('res.users', string='Coordinator')
 
     def _compute_display_name(self):
         for rec in self:
-            rec.display_name = 'Mock interview for ' + rec.student_name
+            rec.display_name = 'Mock interview for ' + rec.student_name.name

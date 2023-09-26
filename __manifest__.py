@@ -6,10 +6,12 @@
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
+        'security/rules.xml',
         'views/mock_interview.xml',
         'views/interviewer.xml',
         'views/interview_web_form.xml',
         'views/link_wizard.xml',
+        'views/students_lists.xml',
         # 'security/record_rule.xml',
         # 'views/one_to_one.xml'
 

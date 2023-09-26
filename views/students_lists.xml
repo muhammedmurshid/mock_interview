@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="meeting_attend_students_list" model="ir.ui.view">
+        <field name="name">Mock Interview Students</field>
+        <field name="model">interview.attend.students.list</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="One to One Meeting">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_interview_schedule" string="Schedule" type="object" class="oe_highlight" states="draft"/>
+                    <button name="copy_interview_link" string="Copy Link" type="object" class="oe_highlight" states="interview"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="batch_id"/>
+                            <field name="interviewer_id"/>
+                            <field name="coordinator_id" readonly="True"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Students">
+                            <field name="students_list_ids" context = "{'parent_id': active_id, 'parent_model': 'interview.attend.students.list'}">
+                                <tree string="Students" editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="meeting_attend_lists_tree_view" model="ir.ui.view">
+        <field name="name">Mock Interview Students List</field>
+        <field name="model">interview.attend.students.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="batch_id"/>
+                <field name="state"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="meeting_link_for_interview">
+        <field name="name">Students Lists</field>
+        <field name="res_model">interview.attend.students.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Meeting Students List" id="menu_meeting_students_list"
+              action="meeting_link_for_interview"
+              parent="menu_interview_main"
+              sequence="10"/>
+
+
+</odoo>
