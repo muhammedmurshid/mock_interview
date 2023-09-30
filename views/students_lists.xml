@@ -9,7 +9,7 @@
                 <header>
                     <field name="state" widget="statusbar"/>
                     <button name="action_interview_schedule" string="Schedule" type="object" class="oe_highlight" states="draft"/>
-                    <button name="copy_interview_link" string="Copy Link" type="object" class="oe_highlight" states="interview"/>
+                    <button name="copy_interview_link" string="Copy Link" type="object" states="interview" style="background-color:#f5b342"/>
                 </header>
                 <sheet>
                     <group>

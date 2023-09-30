@@ -8,3 +8,5 @@ access_mock_interview_coordinator,access_mock_interview,model_logic_mock_intervi
 access_mock_interview_wizard_coordinator,access_mock_interview,model_link_mock_interview_wizard,mock_teacher,1,1,1,1
 interview_list,access_lists,model_interview_attend_students_list,mock_teacher,1,1,1,1
 interview_list_tree,access_lists,model_attend_students_list,mock_teacher,1,1,1,1
+interview_rate,access_lists,model_mock_interviewer_rate,,1,1,1,1
+interview_payment,access_lists,model_interviewer_payment,,1,1,1,1

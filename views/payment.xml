@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="payment_for_mock_interview_wizard" model="ir.ui.view">
+        <field name="name">Payment</field>
+        <field name="model">interviewer.payment</field>
+        <field name="arch" type="xml">
+            <form string="Payment">
+                <group>
+                    <group class="oe_title">
+                        <field name="interviewer_id"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <group>
+                        <field name="interview_count"/>
+                        <field name="amount"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Create Payment" class="oe_highlight" type="object" name='action_create_payment'/>
+                    <button string="Discard" type="object" special='cancel'/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="interview_payment_action" model="ir.actions.act_window">
+        <field name="name">Payment</field>
+        <field name="res_model">interviewer.payment</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="payment_for_mock_interview_wizard"/>
+        <field name="target">new</field> <!-- Opens the wizard in a popup -->
+        <field name="type">ir.actions.act_window</field>
+    </record>
+    <record id="mock_interview_payment_inherit" model="ir.ui.view">
+        <field name="name">mock.view.form.inherit</field>
+        <field name="model">payment.request</field>
+        <field name="inherit_id" ref="logic_payments.payment_request_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='source_type']" position="after">
+                <field name="mock_interviewer_id" attrs="{'invisible': [('source_type', '!=', 'mock_interview')]}"/>
+            </xpath>
+        </field>
+    </record>
+    <menuitem name="Payment" id="menu_interview_payment" action="interview_payment_action"
+              parent="menu_interview_configuration"
+              sequence="5"/>
+</odoo>

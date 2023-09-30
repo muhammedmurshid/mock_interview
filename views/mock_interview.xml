@@ -6,6 +6,10 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Form">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_done" string="Done" type="object" states="draft" style="background-color:#f5b342"/>
+                </header>
                 <sheet>
 
                     <group>
@@ -22,6 +26,7 @@
                             <field name="friendliness"/>
                         </group>
                         <group>
+                            <field name="date"/>
                             <field name="interviewer"/>
                             <field name="coordinator" readonly="1"/>
                         </group>
@@ -45,7 +50,9 @@
             <tree>
                 <field name="student_name"/>
                 <field name="interviewer"/>
+                <field name="date"/>
                 <field name="coordinator"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'confirmed'"/>
 
             </tree>
 

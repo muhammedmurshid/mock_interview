@@ -45,7 +45,15 @@ class MockInterview(models.Model):
     )
     interviewer = fields.Many2one('mock_interviewer.table', string='Interviewer')
     coordinator = fields.Many2one('res.users', string='Coordinator')
+    state = fields.Selection([
+        ('draft', 'Draft'), ('confirmed', 'Confirmed'), ('done', 'Done'),
+    ], default='draft', tracking=True)
+    date = fields.Date('Date', default=lambda self: fields.Date.context_today(self))
+
+    def action_done(self):
+        self.write({'state': 'confirmed'})
 
     def _compute_display_name(self):
         for rec in self:
             rec.display_name = 'Mock interview for ' + rec.student_name.name
+
