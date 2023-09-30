@@ -26,6 +26,7 @@
                             <field name="students_list_ids" context = "{'parent_id': active_id, 'parent_model': 'interview.attend.students.list'}">
                                 <tree string="Students" editable="bottom">
                                     <field name="name"/>
+                                    <field name="attend_time" widget="float_time"/>
                                 </tree>
                             </field>
                         </page>

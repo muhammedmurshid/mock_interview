@@ -8,7 +8,7 @@ class MockInterviewDaysStudentsList(models.Model):
     _description = 'Students List'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    date = fields.Datetime('Scheduled Date and Time', required=True)
+    date = fields.Date('Scheduled Date', required=True)
     batch_id = fields.Many2one('logic.base.batch', string="Batch", required=True)
     students_list_ids = fields.One2many('attend.students.list', 'student_list_id', )
     interviewer_id = fields.Many2one('mock_interviewer.table', string="Interviewer", required=True)
@@ -64,6 +64,7 @@ class AttendStudentsList(models.Model):
 
     name = fields.Many2one('logic.students', string='Name')
     student_list_id = fields.Many2one('interview.attend.students.list', string="Student List")
+    attend_time = fields.Float(string="Scheduled Time",default=10)
 
     @api.onchange('name')
     def onchange_name_for_students(self):
