@@ -43,32 +43,32 @@ class MockInterviewDaysStudentsList(models.Model):
         for rec in self:
             rec.display_name = 'Interview for ' + rec.batch_id.name
 
-    @api.onchange('batch_id')
-    def onchange_batch_id_for_students_list(self):
-        students = self.env['logic.students'].search([('batch_id', '=', self.batch_id.id)])
-        abc = []
-        unlink_commands = [(3, child.id) for child in self.students_list_ids]
-        self.write({'students_list_ids': unlink_commands})
-
-        for i in students:
-            res_list = {
-                'name': i.id,
-
-            }
-            abc.append((0, 0, res_list))
-        self.students_list_ids = abc
+    # @api.onchange('batch_id')
+    # def onchange_batch_id_for_students_list(self):
+    #     students = self.env['logic.students'].search([('batch_id', '=', self.batch_id.id)])
+    #     abc = []
+    #     unlink_commands = [(3, child.id) for child in self.students_list_ids]
+    #     self.write({'students_list_ids': unlink_commands})
+    #
+    #     for i in students:
+    #         res_list = {
+    #             'name': i.id,
+    #
+    #         }
+    #         abc.append((0, 0, res_list))
+    #     self.students_list_ids = abc
 
 
 class AttendStudentsList(models.Model):
     _name = 'attend.students.list'
 
-    name = fields.Many2one('logic.students', string='Name')
     student_list_id = fields.Many2one('interview.attend.students.list', string="Student List")
-    attend_time = fields.Float(string="Scheduled Time",default=10)
+    attend_time = fields.Float(string="Scheduled Time", default=10)
 
-    @api.onchange('name')
-    def onchange_name_for_students(self):
+    # @api.onchange('name')
+    # def onchange_name_for_students(self):
+    #     print(self.env.context.get('parent_id'), 'oo')
+    #     record = self.env['interview.attend.students.list'].browse(self.env.context.get('parent_id'))
+    #     print(record, 'record')
 
-        print(self.env.context.get('parent_id'), 'oo')
-        record = self.env['interview.attend.students.list'].browse(self.env.context.get('parent_id'))
-        print(record, 'record')
+    name = fields.Many2one('logic.students', string='Name')

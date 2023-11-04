@@ -23,9 +23,9 @@
                     </group>
                     <notebook>
                         <page string="Students">
-                            <field name="students_list_ids" context = "{'parent_id': active_id, 'parent_model': 'interview.attend.students.list'}">
+                            <field name="students_list_ids">
                                 <tree string="Students" editable="bottom">
-                                    <field name="name"/>
+                                    <field name="name" domain="[('batch_id','=', parent.batch_id)]"/>
                                     <field name="attend_time" widget="float_time"/>
                                 </tree>
                             </field>
