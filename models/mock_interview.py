@@ -51,6 +51,18 @@ class MockInterview(models.Model):
     date = fields.Date('Date', default=lambda self: fields.Date.context_today(self))
 
     def action_done(self):
+        student = self.env['logic.students'].search([('id', '=', self.student_name.id)])
+        student.mock_date = self.date
+        student.mock_communication_skill = self.communication_skill
+        student.mock_language_skill = self.language_skill
+        student.mock_presentation_skill = self.presentation_skill
+        student.mock_confidence_level = self.confidence_level
+        student.mock_body_language = self.body_language
+        student.mock_dressing_pattern = self.dressing_pattern
+        student.mock_attitude = self.attitude
+        student.mock_quality_of_resume = self.quality_of_resume
+        student.mock_friendliness = self.friendliness
+
         self.write({'state': 'confirmed'})
 
     def _compute_display_name(self):
